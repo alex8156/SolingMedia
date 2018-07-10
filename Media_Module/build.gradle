@@ -1,0 +1,174 @@
+/*
+ * Copyright (C) 2017 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+}
+
+dependencies {
+    // Support libraries
+
+    compile files('libs/classes.jar')
+
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21"
+
+    implementation deps.support.app_compat
+    implementation deps.support.v4
+    implementation deps.support.design
+
+//    kapt 'com.android.databinding:compiler:3.1.2'
+
+    // Architecture components
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    kapt deps.lifecycle.compiler
+    implementation deps.room.runtime
+    kapt deps.room.compiler
+//    implementation deps.room.rxjava2
+
+    // RxJava
+//    implementation deps.rx_android
+//    implementation deps.rxjava2
+//    implementation 'io.reactivex.rxjava2:rxkotlin:2.1.0'
+
+//    implementation 'com.github.nitrico.lastadapter:lastadapter:2.3.0'
+
+    // kotlin
+    // Kotlin
+    implementation deps.kotlin.stdlib
+    implementation 'androidx.core:core-ktx:0.3'
+    // Dependencies for local unit tests
+//    testImplementation deps.junit
+//    testImplementation deps.mockito.all
+//    testImplementation deps.hamcrest
+//    testImplementation deps.arch_core.testing
+//    testImplementation deps.kotlin.stdlib
+//    testImplementation deps.kotlin.test
+//
+//
+//
+//    // Android Testing Support Library's runner and rules
+//    androidTestCompile deps.atsl.runner
+//    androidTestCompile deps.atsl.rules
+//    androidTestCompile deps.room.testing
+//    androidTestCompile deps.arch_core.testing
+//
+//    // Dependencies for Android unit tests
+//    androidTestCompile deps.junit
+//    androidTestCompile deps.mockito.core, { exclude group: 'net.bytebuddy' }
+//    androidTestCompile deps.dexmaker
+//
+//    // Espresso UI Testing
+//    androidTestCompile deps.espresso.core
+//    androidTestCompile deps.espresso.contrib
+//    androidTestCompile deps.espresso.intents
+//
+//    // Resolve conflicts between main and test APK:
+//    androidTestCompile deps.support.annotations
+//    androidTestCompile deps.support.v4
+//    androidTestCompile deps.support.app_compat
+//    androidTestCompile deps.support.design
+
+//    assembleDebug {
+//        doLast {
+//            def fileName = "${project.name}-debug.apk"
+//            def fromFile = "./build/outputs/apk/" + fileName
+////            def intoFile = "Z:\\android\\out\\target\\product\\t3-p3\\system\\app\\"
+//            def intoFile = "./"
+//
+//            def appName = "D2S-App-Music.apk"
+//
+//            copy {
+//                from fromFile
+//                into intoFile
+//
+//
+//                rename {
+//                    appName
+//                }
+//            }
+//
+//
+//            println("=====================build.doLast success.=========================")
+//            exec {
+//                commandLine "./push.bat"
+//            }
+//        }
+//    }
+
+
+//    task buildDebug(dependsOn:'assembleDebug') {
+//
+//        doLast {
+//            def fileName = "${project.name}-debug.apk"
+//            def fromFile = "./build/outputs/apk/debug/" + fileName
+////            def intoFile = "Z:\\android\\out\\target\\product\\t3-p3\\system\\app\\"
+//            def intoFile = "./"
+//
+//            def appName = "D2S-App-Music.apk"
+//
+//            copy {
+//                from fromFile
+//                into intoFile
+//
+//                rename {
+//                    appName
+//                }
+//            }
+//
+//            println("=====================build.doLast success.=========================")
+//        }
+//
+//    }
+
+
+
+
+
+}
+
+

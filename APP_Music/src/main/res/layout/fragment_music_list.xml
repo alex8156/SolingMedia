@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable name="checkHandler" type="com.soling.music.ui.MusicListFragment.CheckHandler"/>
+    </data>
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <View
+        android:id="@+id/search_bg"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:background="@mipmap/search_box_bottom"
+        ></View>
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/searchbox"
+        app:layout_constraintBottom_toBottomOf="@+id/search_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        />
+    <Button
+        android:id="@+id/bt_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bt_search"
+        app:layout_constraintTop_toTopOf="@+id/et_search"
+        app:layout_constraintBottom_toBottomOf="@+id/et_search"
+        app:layout_constraintEnd_toEndOf="@+id/et_search"
+        android:layout_marginRight="10dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/search_bg"
+        android:background="@mipmap/horizontalline"
+        />
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="247dp"
+        android:layout_height="0dp"
+        android:background="@mipmap/background"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/search_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_favorite"
+            style="@style/style_rb"
+            android:button="@drawable/selector_rb_favorite"
+            android:onCheckedChanged="@{checkHandler::checkedFavorite}"
+            />
+
+
+        <RadioButton
+            android:id="@+id/rb_internal"
+            style="@style/style_rb"
+            android:button="@drawable/selector_rb_internal"
+            android:onCheckedChanged="@{checkHandler::checkedInternal}"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_usb"
+            style="@style/style_rb"
+            android:button="@drawable/selector_rb_usb"
+            android:onCheckedChanged="@{checkHandler::checkedUsb}"
+            android:checked="true"
+            />
+    </RadioGroup>
+
+    <View
+        android:id="@+id/vertical_divide"
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/rg"
+        app:layout_constraintTop_toBottomOf="@id/search_bg"
+        android:background="@mipmap/verticalline"
+
+        />
+
+    <FrameLayout
+        android:id="@+id/fl_childFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/vertical_divide"
+        app:layout_constraintTop_toBottomOf="@+id/search_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+    </FrameLayout>
+
+
+
+    <!--<WebView-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:visibility="gone"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/rg"-->
+        <!--&gt;-->
+
+    <!--</WebView>-->
+</android.support.constraint.ConstraintLayout>
+</layout>

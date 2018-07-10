@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/progress" >
+        <shape android:shape="rectangle" ></shape>
+        <bitmap android:src="@mipmap/seekbar2" />
+    </item>
+    <item android:id="@android:id/background" >
+        <bitmap android:src="@mipmap/video_seekbar"/>
+    </item>
+
+</layer-list>
