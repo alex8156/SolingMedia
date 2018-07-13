@@ -1,6 +1,5 @@
 package com.soling.music.ui
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -30,12 +29,12 @@ class VideoPlayFragment : Fragment() {
 
             override fun surfaceDestroyed(holder: SurfaceHolder?) {
                 mylog("surfaceDestroyed")
-                videoPlayItemViewModel.stop()
+                videoPlayItemViewModel.surfaceDestroyed()
             }
 
             override fun surfaceCreated(holder: SurfaceHolder?) {
                 mylog("surfaceCreated")
-                videoPlayItemViewModel.setSurfaceHolder(holder)
+                videoPlayItemViewModel.surfaceCreated(holder)
             }
 
         });

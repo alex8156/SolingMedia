@@ -1,1 +1,1 @@
-include ':Media_Module',':APP_Music', ':APP_Video'
+include ':media-library',':APP_Music', ':APP_Video'

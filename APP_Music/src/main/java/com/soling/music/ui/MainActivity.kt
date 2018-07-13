@@ -40,18 +40,23 @@ class MainActivity : AppCompatActivity() {
         transaction { add(R.id.fragment_container,musicPlayFragment) }
         showPlayFragment()
 
-        usbMediaViewModel = ViewModelProviders.of(this, Injection.usbVideoViewModelFactory(MediaApplication.getInstance())).get(UsbMediaViewModel::class.java)
+        usbMediaViewModel = ViewModelProviders.of(this, Injection.usbMusicViewModelFactory(MediaApplication.getInstance())).get(UsbMediaViewModel::class.java)
         usbMediaViewModel.viewFlagLiveData.observe(this, Observer {
             it?.let {
                 mylog("viewFlag==>USB_IN_FLAG=${it and ViewFlags.USB_IN_FLAG};LIST_NOT_EMPTY_FLAG=${it and ViewFlags.LIST_NOT_EMPTY_FLAG};PARK_ENABLE_FLAG=${it and ViewFlags.PARK_ENABLE_FLAG};SCAN_START_FLAG=${it and ViewFlags.SCAN_START_FLAG}")
-                if(((it and ViewFlags.USB_IN_FLAG) != 0) && ((it and ViewFlags.SCAN_START_FLAG )!= 0)) {
+                if(it and ViewFlags.USB_IN_FLAG == 0 ) {
                     scan_panel.visibility = View.VISIBLE
-                    mylog("当前线程=》${Thread.currentThread().name}")
-                    tv_scan_state.setText("扫描中...")
-                    mylog("扫描中...")
-                }  else {
+                    tv_scan_state.setText("未检测到U盘")
+//                    videoPlayItemViewModel.unmount()
+                }
+                if( ((it and ViewFlags.SCAN_START_FLAG )!= 0)) {
+                    scan_panel.visibility = View.VISIBLE
+                    tv_scan_state.setText("正在加载中...")
+                    mylog("正在加载中...")
+                }
+
+                if(it and ViewFlags.SCAN_START_FLAG == 0 && it and ViewFlags.USB_IN_FLAG != 0 &&  it and  ViewFlags.LIST_NOT_EMPTY_FLAG != 0) {
                     scan_panel.visibility = View.GONE
-                    mylog("扫描完成")
                 }
 
                 if(it and ViewFlags.USB_IN_FLAG != 0 &&  it and ViewFlags.SCAN_START_FLAG == 0 && it and  ViewFlags.LIST_NOT_EMPTY_FLAG != 0 &&  it and ViewFlags.PARK_ENABLE_FLAG == 0) {
@@ -63,19 +68,12 @@ class MainActivity : AppCompatActivity() {
 
                 if(it and ViewFlags.USB_IN_FLAG != 0 && it and ViewFlags.SCAN_START_FLAG == 0 && it and  ViewFlags.LIST_NOT_EMPTY_FLAG == 0 ) {
                     scan_panel.visibility = View.VISIBLE
-                    tv_scan_state.setText("无视频文件")
+                    tv_scan_state.setText("无音频文件")
                 }
 
                 if(it and ViewFlags.USB_IN_FLAG != 0 && it and ViewFlags.SCAN_START_FLAG == 0 && it and ViewFlags.LIST_NOT_EMPTY_FLAG != 0 && it and ViewFlags.PARK_ENABLE_FLAG != 0)
                     tv_park.visibility = View.VISIBLE
                 else tv_park.visibility = View.GONE
-
-                if(it and ViewFlags.USB_IN_FLAG == 0) {
-                    scan_panel.visibility = View.VISIBLE
-                    tv_scan_state.setText("未检测到U盘")
-//                    videoPlayItemViewModel.unmount()
-                }
-
             }
 
         })
@@ -97,11 +95,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        musicAppChanged(false)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        UsbMediaViewModelPool.getInstance().clear()
+//        UsbMediaViewModelPool.getInstance().clear()
     }
 
     override fun onBackPressed() {

@@ -10,4 +10,5 @@
 .externalNativeBuild
 .idea/
 .google/
+bintray.properties
 

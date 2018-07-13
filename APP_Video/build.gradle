@@ -55,7 +55,7 @@ dependencies {
 
 //    compile files('libs/classes.jar')
 
-    compile project(':Media_Module')
+    compile project(':media-library')
 
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21"
 

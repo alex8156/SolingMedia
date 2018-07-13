@@ -11,6 +11,7 @@ import android.os.IBinder
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.soling.autosdk.systemui.Ui
 import com.soling.autosdk.usb.UsbConst
 import com.soling.media.Injection
 import com.soling.media.MediaApplication
@@ -50,14 +51,19 @@ class MainActivity : AppCompatActivity() {
         usbMediaViewModel.viewFlagLiveData.observe(this, Observer {
             it?.let {
                 mylog("viewFlag==>USB_IN_FLAG=${it and ViewFlags.USB_IN_FLAG};LIST_NOT_EMPTY_FLAG=${it and ViewFlags.LIST_NOT_EMPTY_FLAG};PARK_ENABLE_FLAG=${it and ViewFlags.PARK_ENABLE_FLAG};SCAN_START_FLAG=${it and ViewFlags.SCAN_START_FLAG}")
-                if(((it and ViewFlags.USB_IN_FLAG) != 0) && ((it and ViewFlags.SCAN_START_FLAG )!= 0)) {
+                if(it and ViewFlags.USB_IN_FLAG == 0 ) {
                     scan_panel.visibility = View.VISIBLE
-                    mylog("当前线程=》${Thread.currentThread().name}")
-                    tv_scan_state.setText("扫描中...")
-                    mylog("扫描中...")
-                }  else {
+                    tv_scan_state.setText("未检测到U盘")
+//                    videoPlayItemViewModel.unmount()
+                }
+                if( ((it and ViewFlags.SCAN_START_FLAG )!= 0)) {
+                    scan_panel.visibility = View.VISIBLE
+                    tv_scan_state.setText("正在加载中...")
+                    mylog("正在加载中...")
+                }
+
+                if(it and ViewFlags.SCAN_START_FLAG == 0 && it and ViewFlags.USB_IN_FLAG != 0 &&  it and  ViewFlags.LIST_NOT_EMPTY_FLAG != 0) {
                     scan_panel.visibility = View.GONE
-                    mylog("扫描完成")
                 }
 
                 if(it and ViewFlags.USB_IN_FLAG != 0 &&  it and ViewFlags.SCAN_START_FLAG == 0 && it and  ViewFlags.LIST_NOT_EMPTY_FLAG != 0 &&  it and ViewFlags.PARK_ENABLE_FLAG == 0) {
@@ -73,23 +79,12 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 if(it and ViewFlags.USB_IN_FLAG != 0 && it and ViewFlags.SCAN_START_FLAG == 0 && it and ViewFlags.LIST_NOT_EMPTY_FLAG != 0 && it and ViewFlags.PARK_ENABLE_FLAG != 0)
-                 tv_park.visibility = View.VISIBLE
+                    tv_park.visibility = View.VISIBLE
                 else tv_park.visibility = View.GONE
-
-                if(it and ViewFlags.USB_IN_FLAG == 0) {
-                    scan_panel.visibility = View.VISIBLE
-                    tv_scan_state.setText("未检测到U盘")
-//                    videoPlayItemViewModel.unmount()
-                }
-
             }
 
         })
-        usbMediaViewModel.mountFlagLiveData.observe(this, Observer {
-            it?.let {
-//                if(!it)finish()
-            }
-        })
+
     }
 
     fun showPlayFragment() {
@@ -104,7 +99,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 //        videoPlayItemViewModel.play_pause(true)
-        videoAppChanged(true)
+//        videoAppChanged(true)
     }
 
     override fun onPause() {
@@ -114,6 +109,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+//        videoAppChanged(false)
     }
 
     override fun onDestroy() {

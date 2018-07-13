@@ -14,10 +14,14 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.application'
+//apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
 
 kotlin {
     experimental {
@@ -30,7 +34,6 @@ android {
     buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        applicationId "com.soling.music"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 1
@@ -47,23 +50,21 @@ android {
     dataBinding {
         enabled true
     }
-
+    defaultPublishConfig "debug"
 }
 
 dependencies {
     // Support libraries
 
-//    compile files('libs/classes.jar')
+    compile files('libs/classes.jar')
 
-    compile project(':media-library')
-//    compile 'com.soling.media:media-library:1.0.0'
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21"
 
     implementation deps.support.app_compat
     implementation deps.support.v4
     implementation deps.support.design
 
-    kapt 'com.android.databinding:compiler:3.1.2'
+//    kapt 'com.android.databinding:compiler:3.1.2'
 
     // Architecture components
     implementation deps.lifecycle.runtime
@@ -71,11 +72,14 @@ dependencies {
     kapt deps.lifecycle.compiler
     implementation deps.room.runtime
     kapt deps.room.compiler
-    implementation deps.room.rxjava2
+//    implementation deps.room.rxjava2
 
+    // RxJava
+//    implementation deps.rx_android
+//    implementation deps.rxjava2
+//    implementation 'io.reactivex.rxjava2:rxkotlin:2.1.0'
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation 'com.github.nitrico.lastadapter:lastadapter:2.3.0'
+//    implementation 'com.github.nitrico.lastadapter:lastadapter:2.3.0'
 
     // kotlin
     // Kotlin
@@ -141,34 +145,65 @@ dependencies {
 //    }
 
 
-    task buildDebug(dependsOn:'assembleDebug') {
-
-        doLast {
-            def fileName = "${project.name}-debug.apk"
-            def fromFile = "./build/outputs/apk/debug/" + fileName
-//            def intoFile = "Z:\\android\\out\\target\\product\\t3-p3\\system\\app\\"
-            def intoFile = "./"
-
-            def appName = "D2S-App-Music.apk"
-
-            copy {
-                from fromFile
-                into intoFile
-
-                rename {
-                    appName
-                }
-            }
-
-            println("=====================build.doLast success.=========================")
-        }
-
-    }
-
-
-
-
+//    task buildDebug(dependsOn:'assembleDebug') {
+//
+//        doLast {
+//            def fileName = "${project.name}-debug.apk"
+//            def fromFile = "./build/outputs/apk/debug/" + fileName
+////            def intoFile = "Z:\\android\\out\\target\\product\\t3-p3\\system\\app\\"
+//            def intoFile = "./"
+//
+//            def appName = "D2S-App-Music.apk"
+//
+//            copy {
+//                from fromFile
+//                into intoFile
+//
+//                rename {
+//                    appName
+//                }
+//            }
+//
+//            println("=====================build.doLast success.=========================")
+//        }
+//
+//    }
 
 }
+
+ext {
+    bintrayRepo = 'SolingMedia'
+    bintrayName ="media-library"
+
+    libraryName = 'media-library'
+
+    publishedGroupId = "com.soling.media"
+    artifact ='media-library'
+    libraryVersion = '1.0.0'
+
+    libraryDescription = 'media module owned by soling'
+    siteUrl = 'https://github.com/alex8156/SolingMedia'
+    gitUrl = 'https://github.com/alex8156/SolingMedia.git'
+    developerId = 'soling'
+    developerName = 'soling'
+    developerEmail = 'yizeng@szsoling.com'
+    licenseName = 'The Apache Software License,Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLincenses = ["Apache-2.0"]
+}
+
+//publish {
+//    repoName = 'SolingMedia'
+//    userOrg = 'alex8156'//bintray.com你的用户名
+//    groupId = 'com.soling'//jcenter上的路径
+//    artifactId = 'media-library'//项目名称
+//    publishVersion = '1.0.0'//版本号
+//    desc = 'media module owned by soling'//描述，不重要
+//    website = 'http://www.szsoling.com/home/'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+//    //don't forget to add your custom publication
+//}
+
+apply from: 'bintray.gradle'
+apply from: 'install.gradle'
 
 

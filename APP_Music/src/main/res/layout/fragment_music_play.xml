@@ -90,17 +90,17 @@
 
         <android.support.v7.widget.AppCompatSeekBar
             android:id="@+id/seekbar"
-            android:layout_width="592px"
-            android:layout_height="10dp"
+            android:layout_width="592dp"
+            android:layout_height="20dp"
             android:layout_marginBottom="5dp"
             android:max="@{viewmodel.playItem.duration.intValue()}"
+            android:onProgressChanged="@{(view,progress,fromUser)->fromUser?viewmodel.seekTo(progress):void}"
+            android:progress="@{viewmodel.playPosition}"
             android:progressDrawable="@drawable/layerlist_progress"
             android:thumb="@mipmap/thumb"
             app:layout_constraintBottom_toTopOf="@+id/player_bottom_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:progress="@{viewmodel.playPosition}"
-            android:onProgressChanged="@{(view,progress,fromUser)->fromUser?viewmodel.seekTo(progress):void}"
             />
 
         <TextView

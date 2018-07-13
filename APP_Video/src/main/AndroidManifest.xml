@@ -11,7 +11,7 @@
         android:name=".ui.VideoApplication"
         >
 
-        <activity android:name=".ui.MainActivity" android:windowSoftInputMode="stateHidden|adjustPan">
+        <activity android:name=".ui.MainActivity" android:windowSoftInputMode="stateHidden|adjustPan" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
