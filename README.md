@@ -14,8 +14,9 @@
 
 `代理配置私聊我，因为是个人付费账号`
 ### 编译apk
-因为是本地开发，远程依赖太多，并且有些代码是在编译时期生成的，需要用gradle打包生成apk后，以预编译应用程序的形式进行Android make编译。具体操作：
-Android Studio Terminal终端输入`cd APP_Music`，然后输入`gradle build`，打包成功后会在相应工程目录下生成apk ，将apk传输入虚拟桌面中；Gitlab项目分支上创建`Android.mk`([写法参考](https://github.com/alex8156/SolingMedia/blob/master/APP_Music/Android.mk))，拷贝apk至同级目录下,`mm -B`编译
+因为是本地开发，远程依赖太多，并且有些代码是在编译时期生成的，需要用gradle打包生成apk后，以预编译应用程序的形式进行Android make编译。具体操作：</br>
+Android Studio Terminal终端输入`cd APP_Music`，然后输入`gradle build`，打包成功后会在相应工程目录下生成apk ，将apk传输入虚拟桌面中；</br>
+Gitlab项目分支上创建`Android.mk`([写法参考](https://github.com/alex8156/SolingMedia/blob/master/APP_Music/Android.mk))，拷贝apk至同级目录下,`mm -B`编译
 
 ### 发布开源库到JCenter
 
@@ -26,14 +27,14 @@ Android Studio Terminal终端输入`cd APP_Music`，然后输入`gradle build`�
 ### Kotlin语法
 >Kotlin是一种在Java虚拟机上运行的静态类型编程语言，它也可以被编译成为JavaScript源代码。虽然与Java语法并不兼容，但Kotlin被设计成可以和Java代码相互运作，并可以重复使用如Java集合框架等的现有Java类库。—— [维基百科](https://zh.wikipedia.org/wiki/Kotlin)
 
- [官方文档](http://kotlinlang.org/docs/reference/)
- [中文pdf文档](https://legacy.gitbook.com/book/hltj/kotlin-reference-chinese/details)
- [什么是函数式编程思维](https://www.zhihu.com/question/28292740)
- [Lambda 表达式有何用处？如何使用？](https://www.zhihu.com/question/20125256)
-[Kotlin 协程异步操作库](https://www.jianshu.com/p/d4a8358e843e)
-[『译』Coroutines 与 RxJava 异部机制对比之异步编程](https://www.jianshu.com/p/c9a3c32943fc)
-[Kotlin扩展](https://blog.csdn.net/qq_26122557/article/details/79385640)
-[官方新出的 Kotlin 扩展库 KTX，到底帮你干了什么？](https://www.jianshu.com/p/d2b3fdef90d8)
+ [官方文档](http://kotlinlang.org/docs/reference/) </br>
+ [中文pdf文档](https://legacy.gitbook.com/book/hltj/kotlin-reference-chinese/details)</br>
+ [什么是函数式编程思维](https://www.zhihu.com/question/28292740)</br>
+ [Lambda 表达式有何用处？如何使用？](https://www.zhihu.com/question/20125256)</br>
+[Kotlin 协程异步操作库](https://www.jianshu.com/p/d4a8358e843e)</br>
+[『译』Coroutines 与 RxJava 异部机制对比之异步编程](https://www.jianshu.com/p</br>/c9a3c32943fc)
+[Kotlin扩展](https://blog.csdn.net/qq_26122557/article/details/79385640)</br>
+[官方新出的 Kotlin 扩展库 KTX，到底帮你干了什么？](https://www.jianshu.com/p/d2b3fdef90d8)</br>
 [玩转 Kotlin 委托属性](https://www.jianshu.com/p/306bdc2bac3f)
 
 
@@ -45,18 +46,18 @@ Android Studio Terminal终端输入`cd APP_Music`，然后输入`gradle build`�
 - **LiveData:** LiveData是有生命周期感知能力的，这意味着它可以在activities, fragments, 或者 services生命周期是活跃状态时更新这些组件.可以在生命周期结束的时候立刻解除对数据的订阅，从而避免内存泄漏等问题.
 - **Room:**  数据库解决方案,Room在SQLite上提供了一个方便访问的抽象层
 
-[Architecture Component的官方例子](https://github.com/googlesamples/android-architecture-components)
-[理解Android Architecture Components系列](https://www.jianshu.com/p/42eb71ec4a19)
-[使用Room的7个专业小建议](https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1)
+[Architecture Component的官方例子](https://github.com/googlesamples/android-architecture-components)</br>
+[理解Android Architecture Components系列](https://www.jianshu.com/p/42eb71ec4a19)</br>
+[使用Room的7个专业小建议](https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1)</br>
 
 ###  数据绑定库[DataBinding](https://developer.android.com/topic/libraries/data-binding/)
-[Android DataBinding 从入门到进阶](https://blog.csdn.net/c10wtiybq1ye3/article/details/80491063)
-[当RecycleView遇上DataBinding](https://www.jianshu.com/p/fd57c53df244)
-[Android Data Binding: RecyclerView](https://medium.com/google-developers/android-data-binding-recyclerview-db7c40d9f0e4)
-[Databinding与LiveData的合作](https://juejin.im/post/5a4b89e2f265da430e4f896f)
-### 约束布局[ConstraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout)
-[ConstraintLayout在项目中实践与总结](https://www.jianshu.com/p/f110b4fcfe93)
-[（译）理解ConstraintLayout性能上的好处](https://www.jianshu.com/p/fae1d533597b)
+[Android DataBinding 从入门到进阶](https://blog.csdn.net/c10wtiybq1ye3/article/details/80491063)</br>
+[当RecycleView遇上DataBinding](https://www.jianshu.com/p/fd57c53df244)</br>
+[Android Data Binding: RecyclerView](https://medium.com/google-developers/android-data-binding-recyclerview-db7c40d9f0e4)</br>
+[Databinding与LiveData的合作](https://juejin.im/post/5a4b89e2f265da430e4f896f)</br>
+### 约束布局[ConstraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout)</br>
+[ConstraintLayout在项目中实践与总结](https://www.jianshu.com/p/f110b4fcfe93)</br>
+[（译）理解ConstraintLayout性能上的好处](https://www.jianshu.com/p/fae1d533597b)</br>
 
 
 
