@@ -28,11 +28,11 @@ Gitlab项目分支上创建`Android.mk`([写法参考](https://github.com/alex81
 >Kotlin是一种在Java虚拟机上运行的静态类型编程语言，它也可以被编译成为JavaScript源代码。虽然与Java语法并不兼容，但Kotlin被设计成可以和Java代码相互运作，并可以重复使用如Java集合框架等的现有Java类库。—— [维基百科](https://zh.wikipedia.org/wiki/Kotlin)
 
  [官方文档](http://kotlinlang.org/docs/reference/) </br>
- [中文pdf文档](https://legacy.gitbook.com/book/hltj/kotlin-reference-chinese/details)</br>
+ [中文pdf文档](https://legacy.gitbook.com/download/pdf/book/hltj/kotlin-reference-chinese)</br>
  [什么是函数式编程思维](https://www.zhihu.com/question/28292740)</br>
  [Lambda 表达式有何用处？如何使用？](https://www.zhihu.com/question/20125256)</br>
 [Kotlin 协程异步操作库](https://www.jianshu.com/p/d4a8358e843e)</br>
-[『译』Coroutines 与 RxJava 异部机制对比之异步编程](https://www.jianshu.com/p</br>/c9a3c32943fc)
+[『译』Coroutines 与 RxJava 异部机制对比之异步编程](https://www.jianshu.com/p/c9a3c32943fc)</br>
 [Kotlin扩展](https://blog.csdn.net/qq_26122557/article/details/79385640)</br>
 [官方新出的 Kotlin 扩展库 KTX，到底帮你干了什么？](https://www.jianshu.com/p/d2b3fdef90d8)</br>
 [玩转 Kotlin 委托属性](https://www.jianshu.com/p/306bdc2bac3f)
