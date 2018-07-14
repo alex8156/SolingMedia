@@ -1,6 +1,5 @@
 *.iml
 .gradle
-/local.properties
 .idea
 /.idea/workspace.xml
 /.idea/libraries
@@ -10,5 +9,4 @@
 .externalNativeBuild
 .idea/
 .google/
-bintray.properties
 

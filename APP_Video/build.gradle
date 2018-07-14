@@ -148,7 +148,7 @@ dependencies {
 //            def intoFile = "Z:\\android\\out\\target\\product\\t3-p3\\system\\app\\"
             def intoFile = "./"
 
-            def appName = "D2S-App-Music.apk"
+            def appName = "D2S-Video.apk"
 
             copy {
                 from fromFile
