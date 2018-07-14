@@ -26,7 +26,7 @@ Android Studio Terminal终端输入`cd APP_Music`，然后输入`gradle build`�
 ###Kotlin语法
 >Kotlin是一种在Java虚拟机上运行的静态类型编程语言，它也可以被编译成为JavaScript源代码。虽然与Java语法并不兼容，但Kotlin被设计成可以和Java代码相互运作，并可以重复使用如Java集合框架等的现有Java类库。—— [维基百科](https://zh.wikipedia.org/wiki/Kotlin)
 
- [官方文档](http://kotlinlang.org/docs/reference/)
+ [官方文档](http://kotlinlang.org/docs/reference/) 
  [中文pdf文档](https://legacy.gitbook.com/book/hltj/kotlin-reference-chinese/details)
  [什么是函数式编程思维](https://www.zhihu.com/question/28292740)
  [Lambda 表达式有何用处？如何使用？](https://www.zhihu.com/question/20125256)
@@ -56,3 +56,25 @@ Android Studio Terminal终端输入`cd APP_Music`，然后输入`gradle build`�
 ###约束布局[ConstraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout)
 [ConstraintLayout在项目中实践与总结](https://www.jianshu.com/p/f110b4fcfe93)
 [（译）理解ConstraintLayout性能上的好处](https://www.jianshu.com/p/fae1d533597b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
