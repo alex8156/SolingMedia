@@ -46,12 +46,12 @@ class MainActivity : AppCompatActivity() {
                 mylog("viewFlag==>USB_IN_FLAG=${it and ViewFlags.USB_IN_FLAG};LIST_NOT_EMPTY_FLAG=${it and ViewFlags.LIST_NOT_EMPTY_FLAG};PARK_ENABLE_FLAG=${it and ViewFlags.PARK_ENABLE_FLAG};SCAN_START_FLAG=${it and ViewFlags.SCAN_START_FLAG}")
                 if(it and ViewFlags.USB_IN_FLAG == 0 ) {
                     scan_panel.visibility = View.VISIBLE
-                    tv_scan_state.setText("未检测到U盘")
+                    tv_scan_state.text = "未检测到U盘"
 //                    videoPlayItemViewModel.unmount()
                 }
                 if( ((it and ViewFlags.SCAN_START_FLAG )!= 0)) {
                     scan_panel.visibility = View.VISIBLE
-                    tv_scan_state.setText("正在加载中...")
+                    tv_scan_state.text = "正在加载中..."
                     mylog("正在加载中...")
                 }
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
                 if(it and ViewFlags.USB_IN_FLAG != 0 && it and ViewFlags.SCAN_START_FLAG == 0 && it and  ViewFlags.LIST_NOT_EMPTY_FLAG == 0 ) {
                     scan_panel.visibility = View.VISIBLE
-                    tv_scan_state.setText("无音频文件")
+                    tv_scan_state.text = "无音频文件"
                 }
 
                 if(it and ViewFlags.USB_IN_FLAG != 0 && it and ViewFlags.SCAN_START_FLAG == 0 && it and ViewFlags.LIST_NOT_EMPTY_FLAG != 0 && it and ViewFlags.PARK_ENABLE_FLAG != 0)

@@ -12,10 +12,12 @@ import com.soling.media.persistence.model.VideoItem
 import com.soling.media.player.PlayStates
 import com.soling.media.util.mylog
 
+/**
+ * 播放单条曲目ViewModel基类，上下曲，播放，暂停，切换播放模式等
+ */
 open class BasePlayItemViewModel(app: Application, private val playItemRepository: PlayItemRepository) : AndroidViewModel(app) {
 
     val mediaItem = MediatorLiveData<MediaItem>()
-
 
     val playModes = MediatorLiveData<PlayModes>()
 

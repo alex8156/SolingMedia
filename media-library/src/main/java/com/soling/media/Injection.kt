@@ -28,7 +28,7 @@ object Injection {
             MediaDatabase.getInstance(application).musicDao() as BaseDao<Any>
     )
 
-    fun usbVideoViewModelFactory(application: Application) =UsbMediaViewModelFactory.getInstance(application,provideUsbVideoListRepository(application))
+    fun usbVideoViewModelFactory(application: Application) = UsbMediaViewModelFactory.getInstance(application,provideUsbVideoListRepository(application))
 
     fun provideUsbVideoListRepository(application: Application) =  UsbMediaListRepository.getInstance(
             application,

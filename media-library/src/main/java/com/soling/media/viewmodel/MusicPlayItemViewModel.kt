@@ -10,13 +10,16 @@ import com.soling.media.persistence.model.MediaItem
 import com.soling.media.persistence.model.MusicItem
 import com.soling.media.player.PlayStates
 
+/**
+ * 音乐播放单条曲目的ViewModel(还没有重命名为MusicPlayItemModel)
+ */
 class NewPlayItemViewModel(app: Application, playItemRepository: PlayItemRepository) : BasePlayItemViewModel(app,playItemRepository) {
 
     val playItem = MediatorLiveData<MusicItem>()
 
      init {
          playItem.addSource(mediaItem, {
-             playItem.value = it as MusicItem?
+             playItem.value = it as MusicItem?  //父类中的MediaItem转成具体的MusicItem
          })
      }
 

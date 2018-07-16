@@ -8,6 +8,9 @@ import com.soling.media.persistence.model.VideoItem
 import com.soling.media.util.ScreenUtil
 import com.soling.media.util.mylog
 
+/**
+ * 视频播放单条曲目的ViewModel
+ */
 class VideoPlayItemViewModel(app: Application, val playItemRepository: PlayItemRepository) : BasePlayItemViewModel(app,playItemRepository) {
 
     val playItem = MediatorLiveData<VideoItem>()
@@ -28,7 +31,7 @@ class VideoPlayItemViewModel(app: Application, val playItemRepository: PlayItemR
 
      init {
          playItem.addSource(mediaItem, {
-             playItem.value = it as VideoItem?
+             playItem.value = it as VideoItem?  //父类中的MediaItem转成具体的VideoItem
          })
          playItemRepository.player.getIMediaPlayer().setOnVideoSizeChangedListener{  width,height ->
              videoRadio.value = width  / height.toFloat()

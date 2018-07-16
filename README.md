@@ -1,5 +1,5 @@
 # 知豆D2S多媒体交接文档
->知豆D2S多媒体模块使用Kotlin编写，框架基于谷歌官方推荐框架Android Architecture Components，以及databinding库进行数据和视图绑定。功能目前还在完善中，bug也不少，代码也有很多不规范的地方，望大神提出建议改进问题。
+>知豆D2S多媒体模块使用Kotlin编写，框架基于谷歌官方推荐框架Android Architecture Components，以及databinding库进行数据和视图绑定。初次用这些技术,所以目前功能还在完善中，bug也不少，代码也有很多不规范的地方，望大神提出建议改进问题。
 
 ##  环境搭建
 ### 本地安装Android Studio

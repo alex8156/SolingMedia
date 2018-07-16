@@ -7,6 +7,9 @@ import android.arch.lifecycle.MutableLiveData
 import com.soling.media.util.mylog
 import com.soling.media.persistence.repository.UsbMediaListRepository
 
+/**
+ * 列表ViewModel
+ */
 class UsbMediaViewModel(app: Application,val mediaListRepository: UsbMediaListRepository)  :  AndroidViewModel(app) {
 
     val usbLiveData = MediatorLiveData<List<Any?>>()

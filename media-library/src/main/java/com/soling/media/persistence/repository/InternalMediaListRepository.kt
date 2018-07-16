@@ -15,6 +15,9 @@ import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.runBlocking
 
+/**
+ * 本地数据列表数据来源
+ */
 class InternalMediaListRepository(context: Context,scanner: Scanner<*>,dao : BaseDao<Any>):UsbMediaListRepository(context,scanner,dao) {
 
 

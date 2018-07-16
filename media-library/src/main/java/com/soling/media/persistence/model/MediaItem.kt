@@ -9,7 +9,7 @@ import android.arch.persistence.room.PrimaryKey
  * Created by yizeng on 2018/5/7.
  */
 @Entity
-open class MediaItem(@PrimaryKey open var path  :  String = "") {
+open class MediaItem(@PrimaryKey open var path  :  String = "") {    //以去掉扫描根路径的路径为主键
 
     @ColumnInfo open  var displayName : String = ""
     @ColumnInfo open  var duration : Long ?= null
@@ -18,7 +18,7 @@ open class MediaItem(@PrimaryKey open var path  :  String = "") {
 
     @ColumnInfo var isPlayedRecent : Boolean = false
 
-    @ColumnInfo var realPath : String = ""
+    @ColumnInfo var realPath : String = ""  //真实路径
 
     @ColumnInfo var usbRootPath :String = ""
 
